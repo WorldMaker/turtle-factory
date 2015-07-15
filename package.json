@@ -1,6 +1,6 @@
 {
   "name": "turtle-factory",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Turtle (pure) view factory",
   "main": "turtle.js",
   "scripts": {
@@ -16,6 +16,8 @@
     "url": "https://github.com/WorldMaker/turtle-factory/issues"
   },
   "homepage": "https://github.com/WorldMaker/turtle-factory",
+  "format": "es6",
+  "registry": "jspm",
   "dependencies": {
     "object-pattern": "^0.3.1"
   }
