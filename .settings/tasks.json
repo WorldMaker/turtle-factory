@@ -1,0 +1,85 @@
+// Available variables which can be used inside of strings.
+// ${workspaceRoot}: the root folder of the team
+// ${file}: the current opened file
+// ${fileBasename}: the current opened file's basename
+// ${fileDirname}: the current opened file's dirname
+// ${fileExtname}: the current opened file's extension
+// ${cwd}: the current working directory of the spawned process
+
+// A task runner that calls the Typescipt compiler (tsc) and 
+// compiles based on a tsconfig.json file that is present in
+// the root of the folder open in VSCode
+
+{
+	"version": "0.1.0",
+	
+	// The command is tsc. Assumes that tsc has been installed using npm install -g typescript
+	"command": "tsc",
+	
+	// The command is a shell script
+	"isShellCommand": true,
+
+	// Show the output window only if unrecognized errors occur. 
+	"showOutput": "silent",
+	
+	// Tell the tsc compiler to use the tsconfig.json from the open folder.
+	"args": ["-p", "."],
+	
+	// use the standard tsc problem matcher to find compile problems
+	// in the output.
+	"problemMatcher": "$tsc"
+}
+
+// A task runner configuration for gulp. Gulp provides a less task
+// which compiles less to css. 
+/*
+{
+	"version": "0.1.0",
+	"command": "gulp",
+	"isShellCommand": true,
+	"tasks": [
+		{
+			"taskName": "less",
+			// Make this the default build command.
+			"isBuildCommand": true,
+			// Show the output window only if unrecognized errors occur.
+			"showOutput": "silent",
+			// Use the standard less compilation problem matcher.
+			"problemMatcher": "$lessCompile"
+		}
+	]
+}
+*/
+
+// Uncomment the following section to use gulp in a watching mode that compiles a
+// less file. The gulp task prints "[hh:mm:ss] Starting 'clean-styles'" to the console
+// when existing css files get deleted and "[hh:mm:ss] Finished 'styles'" when the 
+// overall less compilation has finished. When the clean pattern is detect internal less
+// problems are cleaned. When the finshed pattern is detected in the output less
+// problems are published.
+/*
+{
+	"version": "0.1.0",
+	"command": "gulp",
+	"isShellCommand": true,
+	"tasks": [
+		{
+			"taskName": "watch-less",
+			// Make this the default build command.
+			"isBuildCommand": true,
+			// Show the output window only if unrecognized errors occur.
+			"showOutput": "silent",
+			// Task is running in watching mode.
+			"isWatching": true,
+			"problemMatcher": {
+				// Use the standard less compilation problem matcher as the base.
+				"base": "$lessCompile",
+				// A regular expression signalling that a watched task begins executing (usually triggered through file watching).
+				"watchedTaskBeginsRegExp": "^\\[\\d+:\\d+:\\d+\\] Starting 'clean-styles'\\.\\.\\.$",
+				// A regular expression signalling that a watched tasks ends executing.
+				"watchedTaskEndsRegExp": "^\\[\\d+:\\d+:\\d+\\] Finished 'styles' after \\d+"
+			}
+		}
+	]
+}
+*/
