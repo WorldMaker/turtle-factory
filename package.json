@@ -1,0 +1,22 @@
+{
+  "name": "turtle-factory",
+  "version": "1.0.0",
+  "description": "Turtle (pure) view factory",
+  "main": "turtle.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WorldMaker/turtle-factory.git"
+  },
+  "author": "Max Battcher <me@worldmaker.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WorldMaker/turtle-factory/issues"
+  },
+  "homepage": "https://github.com/WorldMaker/turtle-factory",
+  "dependencies": {
+    "object-pattern": "^0.3.1"
+  }
+}
