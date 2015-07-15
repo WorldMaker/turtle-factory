@@ -33,7 +33,7 @@ export function translate(load: ModuleSource) {
 		.join('\n');
 	let runs = exhibit.turtles
 		.map((turtle, i) => `
-			/* ${turtle.name}: ${turtle.pattern.replace('*/', '*_/')} => ${turtle.require} */
+			/* ${turtle.name} */
 			if (pattern${i}.match(state)) { return turtle${i}(state); }
 		`)
 		.join('\n');
