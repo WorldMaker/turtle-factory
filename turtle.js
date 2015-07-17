@@ -1,3 +1,4 @@
+let objectParserPath = System.normalize('object-parser');
 export function translate(load) {
     let exhibit = JSON.parse(load.source);
     let imports = exhibit.turtles
@@ -13,7 +14,7 @@ export function translate(load) {
 		`)
         .join('\n');
     return `
-		import {parse} from 'object-parser';
+		import {parse} from '${objectParserPath}';
 		${imports}
 		${patterns}
 		export default view(state) {

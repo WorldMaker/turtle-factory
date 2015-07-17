@@ -23,6 +23,12 @@ interface TurtleExhibit {
 	turtles: Turtle[];
 }
 
+declare module System {
+	export function normalize(name: string): string;
+}
+
+let objectParserPath = System.normalize('object-parser');
+
 export function translate(load: ModuleSource) {
 	let exhibit: TurtleExhibit = JSON.parse(load.source);
 	let imports = exhibit.turtles
@@ -38,7 +44,7 @@ export function translate(load: ModuleSource) {
 		`)
 		.join('\n');
 	return `
-		import {parse} from 'object-parser';
+		import {parse} from '${objectParserPath}';
 		${imports}
 		${patterns}
 		export default view(state) {
