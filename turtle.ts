@@ -24,10 +24,10 @@ interface TurtleExhibit {
 }
 
 declare module System {
-	export function normalize(name: string): string;
+	export function normalize(name: string): Promise<string>;
 }
 
-let objectParserPath = System.normalize('object-parser');
+let normalPromise = System.normalize('object-parser');
 
 export function translate(load: ModuleSource) {
 	let exhibit: TurtleExhibit = JSON.parse(load.source);
@@ -43,12 +43,12 @@ export function translate(load: ModuleSource) {
 			if (pattern${i}.match(state)) { return turtle${i}(state); }
 		`)
 		.join('\n');
-	return `
+	return normalPromise.then(objectParserPath => `
 		import {parse} from '${objectParserPath}';
 		${imports}
 		${patterns}
 		export default view(state) {
 			${runs}
 		}
-	`;
+	`);
 }
