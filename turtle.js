@@ -1,4 +1,4 @@
-let objectParserPath = System.normalize('object-parser');
+let normalPromise = System.normalize('object-parser');
 export function translate(load) {
     let exhibit = JSON.parse(load.source);
     let imports = exhibit.turtles
@@ -13,13 +13,13 @@ export function translate(load) {
 			if (pattern${i}.match(state)) { return turtle${i}(state); }
 		`)
         .join('\n');
-    return `
+    return normalPromise.then(objectParserPath => `
 		import {parse} from '${objectParserPath}';
 		${imports}
 		${patterns}
 		export default view(state) {
 			${runs}
 		}
-	`;
+	`);
 }
 //# sourceMappingURL=turtle.js.map
