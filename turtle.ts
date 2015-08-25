@@ -23,11 +23,13 @@ interface TurtleExhibit {
 	turtles: Turtle[];
 }
 
+declare var __moduleName: string; // ESM module name var in SystemJS
+
 declare module System {
-	export function normalize(name: string): Promise<string>;
+	export function normalize(name: string, referrer?: string): Promise<string>;
 }
 
-let normalPromise = System.normalize('object-parser');
+let normalPromise = System.normalize('object-parser', __moduleName);
 
 export function translate(load: ModuleSource) {
 	let exhibit: TurtleExhibit = JSON.parse(load.source);

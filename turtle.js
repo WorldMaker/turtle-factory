@@ -1,4 +1,4 @@
-let normalPromise = System.normalize('object-parser');
+let normalPromise = System.normalize('object-parser', __moduleName);
 export function translate(load) {
     let exhibit = JSON.parse(load.source);
     let imports = exhibit.turtles
